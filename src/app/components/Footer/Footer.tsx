@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
       <div className='flex items-start justify-center flex-col '>
         <h1 className='text-2xl font-semibold text-white mb-1'>Devify Labs</h1>
         <h1 className='text-sm font-light text-white'>Creating Digital Ecosystem </h1>
-        <h1 className='mt-3 text-xs font-light text-white'>Gurupura Kaikamba, Mangalore,India. </h1>
+        <h1 className='mt-3 text-xs font-light text-white'>Mangalore,India.  </h1>
         <h1 className='mt-1 text-xs font-light text-white'>© 2025, Devify Labs </h1>
 
       </div>
