@@ -1,0 +1,332 @@
+@import "tailwindcss";
+
+/* ─── Switzer Font Face ─────────────────────────────────────────────────── */
+@font-face {
+  font-family: "Switzer";
+  src: url("/fonts/switzer/Switzer-Thin.otf") format("opentype");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Switzer";
+  src: url("/fonts/switzer/Switzer-Extralight.otf") format("opentype");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Switzer";
+  src: url("/fonts/switzer/Switzer-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Switzer";
+  src: url("/fonts/switzer/Switzer-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Switzer";
+  src: url("/fonts/switzer/Switzer-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Switzer";
+  src: url("/fonts/switzer/Switzer-Semibold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Switzer";
+  src: url("/fonts/switzer/Switzer-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Switzer";
+  src: url("/fonts/switzer/Switzer-Extrabold.otf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Switzer";
+  src: url("/fonts/switzer/Switzer-Black.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Switzer";
+  src: url("/fonts/switzer/Switzer-Italic.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Switzer";
+  src: url("/fonts/switzer/Switzer-MediumItalic.otf") format("opentype");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ─── Design Tokens ─────────────────────────────────────────────────────── */
+:root {
+  --blue-primary: #fe5537;
+  --blue-hover: #e24a30;
+  --text-primary: #0a0a0a;
+  --text-secondary: #6b6b6b;
+  --text-muted: #9a9a9a;
+  --bg-white: #ffffff;
+  --bg-card: #f2f2f2;
+  --bg-card-hover: #ebebeb;
+  --border-light: #e5e5e5;
+}
+
+@theme inline {
+  --color-background: var(--bg-white);
+  --color-foreground: var(--text-primary);
+  --font-sans:
+    "Switzer", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg-white);
+  color: var(--text-primary);
+  font-family:
+    "Switzer",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ─── Hero Gradient — Premium Warm Orange ───────────────────────────────── */
+.hero-gradient {
+  background:
+    radial-gradient(
+      ellipse 68% 80% at 8% 22%,
+      rgba(254, 85, 55, 0.36) 0%,
+      transparent 58%
+    ),
+    radial-gradient(
+      ellipse 48% 58% at 62% 78%,
+      rgba(255, 158, 130, 0.2) 0%,
+      transparent 52%
+    ),
+    radial-gradient(
+      ellipse 40% 52% at 90% 12%,
+      rgba(255, 194, 173, 0.24) 0%,
+      transparent 50%
+    ),
+    linear-gradient(
+      148deg,
+      #fff1ea 0%,
+      #fff6f2 28%,
+      #fffaf8 56%,
+      #fffdfc 76%,
+      #ffffff 100%
+    );
+}
+
+/* ─── Marquee animations ─────────────────────────────────────────────────── */
+@keyframes marquee-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+@keyframes marquee-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.marquee-left {
+  display: flex;
+  width: max-content;
+  animation: marquee-left 28s linear infinite;
+  will-change: transform;
+}
+.marquee-right {
+  display: flex;
+  width: max-content;
+  animation: marquee-right 22s linear infinite;
+  will-change: transform;
+}
+.marquee-left:hover,
+.marquee-right:hover {
+  animation-play-state: paused;
+}
+
+/* ─── Animations ─────────────────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes floatY {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.65s ease-out both;
+}
+.animate-fade-up-delay-1 {
+  animation: fadeUp 0.65s ease-out 0.1s both;
+}
+.animate-fade-up-delay-2 {
+  animation: fadeUp 0.65s ease-out 0.2s both;
+}
+.animate-fade-up-delay-3 {
+  animation: fadeUp 0.65s ease-out 0.35s both;
+}
+.animate-float {
+  animation: floatY 4s ease-in-out infinite;
+}
+
+/* ─── Card hover lift ────────────────────────────────────────────────────── */
+.card-hover {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.09);
+}
+
+/* ─── Blue button ────────────────────────────────────────────────────────── */
+.btn-blue {
+  background-color: var(--blue-primary);
+  color: #ffffff;
+  border-radius: 9999px;
+  font-weight: 600;
+  transition:
+    background-color 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
+}
+.btn-blue:hover {
+  background-color: var(--blue-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(20, 0, 255, 0.3);
+}
+
+/* ─── Pill nav ───────────────────────────────────────────────────────────── */
+.nav-pill {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  border-radius: 9999px;
+}
+
+/* ─── Section dot label ──────────────────────────────────────────────────── */
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+  letter-spacing: 0.01em;
+}
+.section-label::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--blue-primary);
+  flex-shrink: 0;
+}
+
+/* ─── Logo container ─────────────────────────────────────────────────────── */
+.logo-container {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ─── Service card watermark ─────────────────────────────────────────────── */
+.card-number {
+  font-size: 80px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.05);
+  line-height: 1;
+  user-select: none;
+}
+
+/* ─── Tag pill ───────────────────────────────────────────────────────────── */
+.tag-pill {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 9999px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+/* ─── Scrollbar hide ─────────────────────────────────────────────────────── */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ─── Smooth links ───────────────────────────────────────────────────────── */
+a {
+  transition: opacity 0.15s ease;
+}
+
+/* ─── Showcase card glow ─────────────────────────────────────────────────── */
+.showcase-glow {
+  box-shadow:
+    0 40px 80px rgba(20, 0, 255, 0.12),
+    0 8px 24px rgba(0, 0, 0, 0.12),
+    0 0 0 1px rgba(255, 255, 255, 0.3);
+}
