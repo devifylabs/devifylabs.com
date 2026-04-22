@@ -122,39 +122,35 @@ export default function Hero() {
       </div>
 
       {/* ── Technologies marquee band ── */}
-      <div className="relative z-10 flex-shrink-0 border-t border-black/10 border-dashed bg-white/40 backdrop-blur-sm">
+      <div className="relative z-10 shrink-0 border-t border-black/10 border-dashed bg-white/40 backdrop-blur-sm">
         {/* Added wrapper with max-width and px-6 to match previous sections */}
         <div className="max-w-[1400px] mx-auto px-6 w-full">
           {/* Added border-x here to frame it nicely within the max-width */}
-          <div
-            className="flex items-stretch border-x border-black/10 border-dashed"
-            style={{ height: "88px" }}
-          >
+          <div className="flex items-stretch border-x border-black/10 border-dashed h-14 md:h-22">
             {/* Left label */}
             <div
-              className="flex-shrink-0 flex flex-col justify-center border-r border-black/10 border-dashed bg-white/60 px-8"
-              style={{ minWidth: "148px" }}
+              className="shrink-0 flex flex-col justify-center border-r border-black/10 border-dashed bg-white/60 px-4 md:px-8"
+              style={{ minWidth: "fit-content" }}
               aria-label="Technologies"
             >
               <p className="text-[10px] font-semibold text-[#fe5537] uppercase tracking-[0.18em] mb-0.5 flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#fe5537] flex-shrink-0" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#fe5537] shrink-0" />
                 TECHNOLOGIES
               </p>
             </div>
 
             {/* Marquee */}
             <div
-              className="flex-1 overflow-hidden"
-              style={{ height: "88px" }}
+              className="flex-1 overflow-hidden h-14 md:h-22"
               aria-hidden="true"
             >
               <div className="marquee-left h-full flex">
                 {marqueeItems.map((tech, i) => (
                   <div
                     key={i}
-                    className="flex-shrink-0 flex items-center border-r border-black/10 border-dashed px-8 h-full"
+                    className="shrink-0 flex items-center border-r border-black/10 border-dashed px-4 md:px-8 h-full"
                   >
-                    <span className="text-[15px] font-medium text-black/70 whitespace-nowrap hover:text-[#0A0A0A] transition-colors duration-200 cursor-default">
+                    <span className="text-[12px] md:text-[15px] font-medium text-black/70 whitespace-nowrap hover:text-[#0A0A0A] transition-colors duration-200 cursor-default">
                       {tech}
                     </span>
                   </div>
