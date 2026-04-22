@@ -82,8 +82,7 @@ export default function Hero() {
 
         {/* Main heading */}
         <h1
-          className="max-w-[1100px] text-3xl md:text-4xl lg:text-7xl font-medium leading-[1.06] tracking-[-0.03em] text-black mb-6 inline-block origin-center"
-          style={{ transform: "scale(1.2)" }}
+          className="max-w-[1100px] px-4 sm:px-0 text-3xl md:text-4xl lg:text-7xl font-medium leading-[1.06] tracking-[-0.03em] text-black mb-6 inline-block origin-center transform md:scale-[1.2]"
         >
           <span className="text-[#fe5537]">Creating</span> Digital Ecosystem
         </h1>
