@@ -1,9 +1,10 @@
 "use client";
 
 import type { MouseEvent } from "react";
+import { useEffect, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -14,6 +15,12 @@ const navLinks = [
 
 export default function Navbar() {
   const router = useRouter();
+  const pathname = usePathname();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [pathname]);
 
   const handleNavClick = (
     event: MouseEvent<HTMLAnchorElement>,
@@ -47,14 +54,14 @@ export default function Navbar() {
     <header className="fixed top-0 left-0 right-0 z-50 px-6 py-4">
       {/* 3-column grid: logo | nav (truly centred) | cta */}
       <nav
-        className="max-w-[1400px] mx-auto grid grid-cols-3 items-center"
+        className="max-w-350 mx-auto flex items-center justify-between md:grid md:grid-cols-3"
         aria-label="Main navigation"
       >
         {/* ── Left: Logo + wordmark ── */}
         <Link
           href="/"
           onClick={(event) => handleNavClick(event, "/")}
-          className="flex items-center gap-2.5 flex-shrink-0 min-w-0"
+          className="flex items-center gap-2.5 shrink-0 min-w-0"
           aria-label="Devify Labs home"
         >
           <img
@@ -108,7 +115,10 @@ export default function Navbar() {
           {/* Mobile hamburger */}
           <button
             className="md:hidden flex flex-col gap-1.5 p-2"
-            aria-label="Open menu"
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-nav-menu"
+            onClick={() => setIsMenuOpen((prev) => !prev)}
           >
             <span className="w-5 h-0.5 bg-[#0A0A0A] block rounded-full" />
             <span className="w-5 h-0.5 bg-[#0A0A0A] block rounded-full" />
@@ -116,6 +126,40 @@ export default function Navbar() {
           </button>
         </div>
       </nav>
+
+      {isMenuOpen && (
+        <div
+          id="mobile-nav-menu"
+          className="md:hidden mt-3 max-w-350 mx-auto rounded-2xl bg-white/95 backdrop-blur-md border border-black/10 shadow-xl p-2"
+        >
+          <div className="flex flex-col">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={(event) => {
+                  setIsMenuOpen(false);
+                  handleNavClick(event, link.href);
+                }}
+                className="px-4 py-3 text-[14px] font-medium text-black hover:text-[#fe5537]"
+              >
+                {link.label}
+              </Link>
+            ))}
+
+            <Link
+              href="https://cal.com/devifylabs"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setIsMenuOpen(false)}
+              className="mt-2 inline-flex items-center justify-center px-5 py-3 text-[14px] font-medium text-white rounded-full bg-[#fe5537] hover:bg-[#e24a30]"
+            >
+              Book a Call
+              <ArrowUpRight size={16} className="ml-2" />
+            </Link>
+          </div>
+        </div>
+      )}
     </header>
   );
 }

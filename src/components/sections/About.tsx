@@ -59,7 +59,7 @@ export default function About() {
           </p>
 
           {/* Stats grid - Max width applied to keep it contained nicely under the paragraph */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 lg:gap-10 max-w-[1150px]">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 lg:gap-10 max-w-[1150px]">
             {stats.map((stat) => (
               <div key={stat.label} className="flex flex-col">
                 {/* Stat label with blue bullet */}
